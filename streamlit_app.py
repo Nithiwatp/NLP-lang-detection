@@ -16,24 +16,21 @@ import joblib
 
 #Functions:
 
-@st.cache
+# @st.cache
 def ocr(img):
   with st.spinner('Loading...'):
     text = pytesseract.image_to_string(img,lang = 'tha+vie+khm+lao+mya+fil')
     from_lang,from_lang1 = predict(text)
     text2 = pytesseract.image_to_string(img,lang = from_lang)
-  # st.markdown("Extracted:")
-  # st.markdown(text2)
   return text2,from_lang,from_lang1
 
-@st.cache
+# @st.cache
 def predict(text):
     cv = joblib.load('./cv_model')
     le = joblib.load('./le_model (1)')
     x = cv.transform([text]).toarray() 
     lang = model.predict(x) 
     lang = le.inverse_transform(lang)
-    # st.write("Predicted Language:", lang[0])
     if lang[0] == 'Vietnamese':
       from_lang = 'vie'
     elif lang[0] == 'Thai':
@@ -48,7 +45,7 @@ def predict(text):
       from_lang = 'khm'
     return from_lang,lang[0]
 
-@st.cache
+# @st.cache
 def trans(text, from_lang, to_lang):
     if from_lang == 'vie':
       from_lang2 = 'vi'
