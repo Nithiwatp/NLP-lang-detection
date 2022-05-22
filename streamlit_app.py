@@ -84,7 +84,7 @@ CURRENT_THEME = "dark"
 IS_DARK_THEME = True
 st.set_page_config(page_title='Language Detection', page_icon="👀")
 st.set_option('deprecation.showfileUploaderEncoding', False) # disable deprecation error
-with open("app.css") as f:
+with open("streamlit_app.css") as f:
     st.markdown('<style>{}</style>'.format(f.read()), unsafe_allow_html=True)
 
 #Customize
