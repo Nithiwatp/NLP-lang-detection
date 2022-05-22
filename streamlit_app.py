@@ -1,22 +1,17 @@
 
 #Import:
 
-import sys
 import streamlit as st
-import pandas as pd
 import numpy as np
-import re
-import matplotlib.pyplot as plt
 import pytesseract
 from PIL import Image
 from sklearn.preprocessing import LabelEncoder
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.model_selection import train_test_split
 from sklearn.naive_bayes import MultinomialNB
-from textblob import TextBlob
 import translators as ts
 import joblib
-import cv2
+
 
 
 #Functions:
