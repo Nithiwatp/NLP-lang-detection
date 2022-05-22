@@ -6,7 +6,6 @@ import streamlit as st
 import pandas as pd
 import numpy as np
 import re
-import seaborn as sns
 import matplotlib.pyplot as plt
 import pytesseract
 from PIL import Image
@@ -34,8 +33,8 @@ def ocr(img):
 
 @st.cache
 def predict(text):
-    cv = joblib.load('/content/NLP-lang-detection/cv_model')
-    le = joblib.load('/content/NLP-lang-detection/le_model (1)')
+    cv = joblib.load('./cv_model')
+    le = joblib.load('./le_model (1)')
     x = cv.transform([text]).toarray() 
     lang = model.predict(x) 
     lang = le.inverse_transform(lang)
@@ -98,7 +97,7 @@ st.title("Language Detection 👋")
 
 @st.cache(allow_output_mutation = True)     # enable cache to improve the loading time
 def get_model():
-    model = joblib.load('/content/NLP-lang-detection/multiNB')
+    model = joblib.load('./multiNB')
     return model
 
 st.sidebar.title("Group 9")
